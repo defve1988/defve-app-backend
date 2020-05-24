@@ -19,14 +19,14 @@ def create_app(config_file='settings.py'):
     ma.init_app(app)
     api.init_app(app)
 
-    @app.route('/')
-    def return_home():
-        return "This is Defve-app's backend."
-
     CORS(app)
 
     with app.app_context():
         db.create_all()
         print('database created.')
+
+    @app.route('/')
+    def return_home():
+        return "This is Defve-app's backend."
 
     return app
